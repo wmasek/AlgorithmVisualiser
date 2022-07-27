@@ -61,9 +61,9 @@ void AVisualiser::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	for (static uint8 pass = 0; pass < NumOfCubes; ++pass)
+	for (uint8 pass = 0; pass < NumOfCubes; ++pass)
 	{
-		for (static uint8 i = 0; i < NumOfCubes - 1; ++i)
+		for (uint8 i = 0; i < NumOfCubes - 1; ++i)
 		{
 			float currentScale = CubeArray[i]->GetComponentScale().Z;
 			float nextScale = CubeArray[i + 1]->GetComponentScale().Z;
@@ -78,8 +78,6 @@ void AVisualiser::Tick(float DeltaTime)
 				CubeArray[i + 1]->SetWorldLocation(temp);
 
 				CubeArray.Swap(i, i + 1);
-
-				UpdateTimer = 0.0f;
 			}
 		}
 	}	
