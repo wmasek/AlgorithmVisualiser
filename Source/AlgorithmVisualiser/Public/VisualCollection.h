@@ -1,19 +1,23 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// © 2022 Will Masek
 
 #pragma once
 
+// Includes
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Visualiser.generated.h"
+#include "VisualCollection.generated.h"
+
+// Forward declarations
+class UVisualElement;
 
 UCLASS()
-class ALGORITHMVISUALISER_API AVisualiser : public AActor
+class ALGORITHMVISUALISER_API AVisualCollection : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AVisualiser();
+	AVisualCollection();
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,11 +27,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// Properties
 	UPROPERTY(EditAnywhere)
-	int NumOfCubes = 10;
+	uint8 CollectionSize;
 
-	UPROPERTY(EditAnywhere)
-	TArray<UStaticMeshComponent*> CubeArray;
+private:
+	TArray<UVisualElement*> CollectionArray;
 
-	float UpdateTimer = 0.0f;
+	float ElementSpacing = 0.0f;
+	bool ShouldUpdate = true;
 };
