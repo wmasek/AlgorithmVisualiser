@@ -27,13 +27,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Properties
-	UPROPERTY(EditAnywhere)
-	uint8 CollectionSize;
-
 private:
+	void UpdateElementLocations();
+
 	TArray<UVisualElement*> CollectionArray;
 
 	float ElementSpacing = 0.0f;
 	bool ShouldUpdate = true;
+	float UpdateTimer = 0.5f;
+
+	uint8 PassCounter = 0;
+	uint8 ComparisonCounter = 0;
 };
